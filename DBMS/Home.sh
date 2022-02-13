@@ -9,7 +9,7 @@ do
             break;
             ;;
           "List Database")
-            echo "Listing Database"
+            . list_databases.sh
             break
             ;;
           "Connect to Database")
