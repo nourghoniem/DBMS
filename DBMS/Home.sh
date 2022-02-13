@@ -5,7 +5,7 @@ select opt in "${options[@]}"
 do
   case $opt in
          "Create Database")
-            sh create_database.sh
+            . create_database.sh
             break;
             ;;
           "List Database")
@@ -13,7 +13,8 @@ do
             break
             ;;
           "Connect to Database")
-            echo "Connecting to Database"
+             . connectDb.sh
+            
             break
             ;;
           "Drop Database")
