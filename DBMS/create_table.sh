@@ -30,12 +30,10 @@ if [ $Check == "false" ]; then
        read num_rows;
        case $num_rows in
           @([[:digit:]]))
-             echo "is a number"
              export num_rows=$num_rows;
              break;
              ;;
           *)
-         echo "not a number"
        esac   
    done 
    old_IFS=$IFS;
@@ -45,13 +43,15 @@ if [ $Check == "false" ]; then
    echo "Primary Key: Enter field datatype:"
    read pk_fieldtype;
    echo "$pk_fieldname,$pk_fieldtype,Primary Key" >> ./Databases/$name/MetaData/${table_name}.csv
-   for i in $((num_rows-1))
+   i=0;
+   while [[ $i < $((num_rows-1)) ]] 
      do
       echo "Enter field name:"
       read fieldname;
       echo "Enter field type:"
       read fieldtype;
       echo "$fieldname,$fieldtype" >> ./Databases/$name/MetaData/${table_name}.csv
+      ((i=i+1))
      done
    echo "Successfully added fields";
   
