@@ -8,7 +8,7 @@ function Menu(){
    do
      case $opt in
          "Create Table")
-            echo "creating table"
+            . create_table.sh
             break;
             ;;
           "List Table")
@@ -52,7 +52,7 @@ read  name
  
   if [ -d  Databases/$name/ ];then
        
-      cd  Databases/$name
+      #cd  Databases/$name
       echo "Connected to Database $name"
       export name=$name;
       Menu
