@@ -46,7 +46,7 @@ function Menu(){
  }
 
 
-echo " please enter data base name "
+echo "Please enter the Database name "
 read  name
 # check if the given name is a directory and exists in db folder
  
@@ -58,7 +58,7 @@ read  name
       Menu
       
   else
-     echo "data base $name doesn't exist"
+     echo "Database $name doesn't exist"
         
    fi
    

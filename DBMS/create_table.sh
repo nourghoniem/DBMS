@@ -40,16 +40,30 @@ if [ $Check == "false" ]; then
    #IFS=","
    echo "Primary Key: Enter field name:"
    read pk_fieldname;
-   echo "Primary Key: Enter field  datatype:"
-   read pk_fieldtype;
+   #echo "Primary Key: Enter field  datatype:"
+   #read pk_fieldtype;
+   echo "Primary Key: Enter field  datatype: [int/string]"
+   select pk_fieldtype in "int" "string"; do
+    case $pk_fieldtype in
+        int ) break;;
+        string ) break;;
+        *) echo "datatype should be either integer or string"
+    esac
+   done
    echo "$pk_fieldname,$pk_fieldtype,Primary Key" >> ./Databases/$name/MetaData/${table_name}.csv
    i=0;
    while [[ $i < $((num_rows-1)) ]] 
      do
       echo "Enter field name:"
       read fieldname;
-      echo "Enter field type:"
-      read fieldtype;
+      echo "Enter field datatype: [int/string]"
+      select fieldtype in "int" "string"; do
+        case $fieldtype in
+         int ) break;;
+         string ) break;;
+      *) echo "datatype should be either integer or string"
+    esac
+   done
       echo "$fieldname,$fieldtype" >> ./Databases/$name/MetaData/${table_name}.csv
       ((i=i+1))
      done
