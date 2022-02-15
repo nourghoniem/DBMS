@@ -15,10 +15,6 @@ function Menu(){
             . listTables.sh
             break;
             ;;
-          "Display Table")
-            echo "displaying table"
-            break;
-            ;;
           "Drop Table")
             . drop_table.sh
             break;
@@ -32,7 +28,7 @@ function Menu(){
             break;
             ;;
            "Delete from Table")
-            echo "Deleting from Table"
+            . delete.sh
             break;
             ;; 
           "Go to main page")

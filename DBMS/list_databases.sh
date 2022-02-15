@@ -1,3 +1,7 @@
 #!/bin/bash
 cd Databases
-ls
+if [[ $(ls -A) ]]; then
+   ls
+else
+    echo "no databases found"
+fi
