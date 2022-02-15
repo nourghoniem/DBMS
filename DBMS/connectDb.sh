@@ -12,7 +12,7 @@ function Menu(){
             break;
             ;;
           "List Table")
-            echo "listing table"
+            . listTables.sh
             break;
             ;;
           "Display Table")
@@ -28,7 +28,7 @@ function Menu(){
             break;
             ;;
            "Select from Table")
-            echo "Selecting from Table"
+            . selectAll.sh
             break;
             ;;
            "Delete from Table")

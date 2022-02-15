@@ -18,7 +18,7 @@ do
             break
             ;;
           "Drop Database")
-            echo "Dropping Database"
+            . dropDb.sh
             break
             ;;
           "Quit")
