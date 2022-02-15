@@ -1,7 +1,7 @@
 
 function checkIfTableExists(){
      ifexists=""
-     if [ -f "/DBMS/Databases/$name/MetaData/$table_name" ]; then
+     if [ -f "/DBMS/Databases/$name/MetaData/${table_name}.csv" ]; then
           echo "file exists."
           ifexists="true";
          
@@ -20,7 +20,7 @@ function checkIfTableExists(){
 shopt -s extglob
 echo "enter the name of the table you want to create";
 read table_name;
-export table_name=$table_name
+export table_name=$table_name;
 Check=$(checkIfTableExists);
 if [ $Check == "false" ]; then
    echo "Successfully added table";
@@ -33,14 +33,14 @@ if [ $Check == "false" ]; then
              export num_rows=$num_rows;
              break;
              ;;
-          *)
+          *) echo "enter a number";
        esac   
    done 
-   old_IFS=$IFS;
-   IFS=","
+   #old_IFS=$IFS;
+   #IFS=","
    echo "Primary Key: Enter field name:"
    read pk_fieldname;
-   echo "Primary Key: Enter field datatype:"
+   echo "Primary Key: Enter field  datatype:"
    read pk_fieldtype;
    echo "$pk_fieldname,$pk_fieldtype,Primary Key" >> ./Databases/$name/MetaData/${table_name}.csv
    i=0;

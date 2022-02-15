@@ -3,7 +3,7 @@
 function Menu(){
 
     PS3=' '$name': Please enter your choice: '
-    options=("Create Table" "List Table" "Display Table" "Drop Table" "Insert into Table", "Select from Table", "Delete from Table", "Go to main page")
+    options=("Create Table" "List Table" "Display Table" "Drop Table" "Insert into Table" "Select from Table" "Delete from Table" "Go to main page")
    select opt in "${options[@]}"
    do
      case $opt in
@@ -13,31 +13,31 @@ function Menu(){
             ;;
           "List Table")
             echo "listing table"
-            break
+            break;
             ;;
           "Display Table")
             echo "displaying table"
-            break
+            break;
             ;;
           "Drop Table")
             echo "Dropping table"
-            break
+            break;
             ;;
            "Insert into Table")
-            echo "Inserting into Table"
-            break
+            . insert_into_table.sh
+            break;
             ;;
            "Select from Table")
             echo "Selecting from Table"
-            break
+            break;
             ;;
            "Delete from Table")
             echo "Deleting from Table"
-            break
+            break;
             ;; 
           "Go to main page")
             . Home.sh
-            break
+            break;
             ;;
           *) echo "invalid option $REPLY";;
       esac
