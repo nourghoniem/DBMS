@@ -24,9 +24,11 @@ while true
       read table_name;
       if [ -z "$table_name" ]; then
          echo "Table name should not be empty";
-     else
+      elif [[ $table_name =~ [[:space:]] ]]; then
+          echo "'$table_name' contains whitespace"
+      else
          break;
-     fi
+      fi
    done
 export table_name=$table_name;
 Check=$(checkIfTableExists);
