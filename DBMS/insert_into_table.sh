@@ -17,7 +17,6 @@ echo "Enter the table you want to insert into";
 read table;
 row="";
 Check=$(checkIfTableExists)
-echo $Check
 if [ $Check == "true" ]; then
    fieldnames=($(awk -F, '{print $1}' "Databases/$name/MetaData/${table}.csv"))
    fieldtype=($(awk -F, '{print $2}' "Databases/$name/MetaData/${table}.csv"))

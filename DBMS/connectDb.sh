@@ -20,7 +20,7 @@ function Menu(){
             break;
             ;;
           "Drop Table")
-            echo "Dropping table"
+            . drop_table.sh
             break;
             ;;
            "Insert into Table")
