@@ -1,4 +1,0 @@
-id,int,Primary Key
-name,string
-age,int
-address,string

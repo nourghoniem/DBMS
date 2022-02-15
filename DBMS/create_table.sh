@@ -18,14 +18,15 @@ function checkIfTableExists(){
 #!/bin/bash
 shopt -s extglob
 echo "enter the name of the table you want to create";
-
 while true
    do
       read table_name;
       if [ -z "$table_name" ]; then
          echo "Table name should not be empty";
       elif [[ $table_name =~ [[:space:]] ]]; then
-          echo "'$table_name' contains whitespace"
+          echo "'$table_name' contains whitespace";
+      elif [[ $table_name =~ ^[[:digit:]].* ]]; then
+          echo "$table_name should not start with a number";
       else
          break;
       fi
