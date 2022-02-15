@@ -6,7 +6,6 @@ function checkIfTableExists(){
           ifexists="true";
          
      else 
-          #echo "file does not exist."
           touch ./Databases/$name/MetaData/${table_name}.csv
           touch ./Databases/$name/Data/${table_name}.csv
           ifexists="false";
@@ -19,7 +18,16 @@ function checkIfTableExists(){
 #!/bin/bash
 shopt -s extglob
 echo "enter the name of the table you want to create";
-read table_name;
+
+while true
+   do
+      read table_name;
+      if [ -z "$table_name" ]; then
+         echo "Table name should not be empty";
+     else
+         break;
+     fi
+   done
 export table_name=$table_name;
 Check=$(checkIfTableExists);
 if [ $Check == "false" ]; then
@@ -40,8 +48,6 @@ if [ $Check == "false" ]; then
    #IFS=","
    echo "Primary Key: Enter field name:"
    read pk_fieldname;
-   #echo "Primary Key: Enter field  datatype:"
-   #read pk_fieldtype;
    echo "Primary Key: Enter field  datatype: [int/string]"
    select pk_fieldtype in "int" "string"; do
     case $pk_fieldtype in
