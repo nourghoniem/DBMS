@@ -9,3 +9,4 @@ else
    mkdir Databases/$database_name/MetaData;
    echo "Database successfully created";
 fi
+. Home.sh

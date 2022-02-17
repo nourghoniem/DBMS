@@ -1,4 +1,4 @@
-
+. tmenu.sh
 function checkIfTableExists(){
      ifexists=""
      if [ -f "Databases/$name/MetaData/${table}.csv" ]; then
@@ -59,6 +59,8 @@ if [ $Check == "true" ]; then
         done
         echo "${row%%,}" >> ./Databases/$name/Data/${table}.csv
 fi
+  Menu
+Menu
    
 
  

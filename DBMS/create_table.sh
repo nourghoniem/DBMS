@@ -1,4 +1,4 @@
-
+. tmenu.sh
 function checkIfTableExists(){
      ifexists=""
      if [ -f "/DBMS/Databases/$name/MetaData/${table_name}.csv" ]; then
@@ -79,3 +79,4 @@ if [ $Check == "false" ]; then
    echo "Successfully added fields";
   
 fi
+Menu

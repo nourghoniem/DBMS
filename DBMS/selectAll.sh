@@ -1,5 +1,5 @@
 #!/bin/bash 
-
+. tmenu.sh 
 function checkIfTableExists(){
      
      if [ -f Databases/$name/MetaData/$tname.csv ]; then
@@ -102,3 +102,4 @@ else
  echo " table doesn't exist "
 fi 
   
+Menu

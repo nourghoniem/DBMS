@@ -1,7 +1,7 @@
 #!/bin/bash
-cd Databases
 if [[ $(ls -A) ]]; then
-   ls
+   ls -r Databases
 else
     echo "no databases found"
 fi
+. Home.sh
