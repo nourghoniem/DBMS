@@ -1,8 +1,8 @@
 #!/bin/bash 
-
+. tmenu.sh
 function checkIfTableExists(){
-     ifexists=""
-     if [ -f Databases/$name/MetaData/$table_name ]; then
+     
+     if [ -f Databases/$name/MetaData/$tname.csv ]; then
           #echo "file exists."
           ifexists="true";
          
@@ -40,7 +40,7 @@ printf "%s\n\n" "...................................... $tname table............
 function selectALL(){
   rows=$(wc -l < Databases/$name/Data/$tname.csv)
   columns=$(wc -l < Databases/$name/MetaData/$tname.csv)
-
+      drawHeader
 	for ((i=1; i<=${rows}; i++)) 
       
 	   
@@ -59,12 +59,49 @@ function selectALL(){
 	     x=""
 	done }
 
+function selectById(){
+
+ read -p  " please enter id for  to display the record " iid
+
+row=$(grep -wn $iid  Databases/$name/Data/$tname.csv| cut -d ':' -f1);
+   if [ "$row" != "" ];then
+           u=""
+  drawHeader
+	  for ((j=1; j<=${columns}; j++))
+	    
+	do
+           # get columns data
+	   v=$(awk -v r=$row -v c=$j -F, 'NR==r {print $c}' Databases/$name/Data/$tname.csv)
+	    
+	    u+="|${v}\t"
+	done
+	    
+	    printf "$u \n"
+    else
+          echo " this id doesn't exist "
+    fi
+                      }
 
 
 ##### main code 
 echo "please enter table name: "
 read tname
-drawHeader
-selectALL
+ Check=$(checkIfTableExists)
+ if [ $Check == "true" ];then
+	read -p " please choose 1 to  select all or 2 to select by id : "  ch
+	if [ $ch == "2" ];then
+	  selectById
+	else 
+	  if [ $ch == "1" ];then
+	  selectALL
+	  else
+	   echo " not valid option "
+	   fi
+	fi 
+else
 
+ echo " table doesn't exist "
+fi
+
+Menu  
   

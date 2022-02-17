@@ -1,0 +1,3 @@
+id,int,Primary Key
+name,string
+grade,int

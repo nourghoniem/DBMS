@@ -1,5 +1,5 @@
 #!/bin/bash
-
+. tmenu.sh
  tables=($(ls Databases/$name/Data))
  
    printf "\n %s\n" "|-------------Tables---------------|"
@@ -7,4 +7,5 @@
 do
      printf "\t\t${table%%.*}\t\t\n"
   done 
-   
+
+Menu
