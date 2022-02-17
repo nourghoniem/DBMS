@@ -21,6 +21,7 @@ if [ $Check == "true" ]; then
    fieldnames=($(awk -F, '{print $1}' "Databases/$name/MetaData/${table}.csv"))
    fieldtype=($(awk -F, '{print $2}' "Databases/$name/MetaData/${table}.csv"))
    constraints=($(awk -F, '{print $3}' "Databases/$name/MetaData/${table}.csv"))
+   
 
    i=0;
    re='^[0-9]+$'
@@ -31,10 +32,14 @@ if [ $Check == "true" ]; then
         while true
            do
                read value;
+               primaryKeyInsertion=($(awk -F,  '/'$value'/ {print $1}' "Databases/$name/Data/${table}.csv"))
+               echo "$primaryKeyInsertion";
                if [ ${fieldtype[$i]} == "int" ]; then
                    if ! [[ $value =~ $re ]]; then
                         echo "You should enter an integer value";
-                    else
+                   elif [[ $i == 0 && ! -z $primaryKeyInsertion  ]]; then
+                        echo "Primary Key cannot be duplicated"
+                   else
                         row+="$value,"
                         break;
                 fi
