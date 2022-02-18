@@ -88,16 +88,16 @@ echo "please enter table name: "
 read tname
  Check=$(checkIfTableExists)
  if [ $Check == "true" ];then
-	read -p " please choose 1 to  select all or 2 to select by id : "  ch
-	if [ $ch == "2" ];then
-	  selectById
-	else 
-	  if [ $ch == "1" ];then
-	  selectALL
-	  else
-	   echo " not valid option "
-	   fi
-	fi 
+	    read -p " please choose 1 to  select all or 2 to select by id : "  ch
+	    if [ $ch == "2" ];then
+	      selectById
+	    else 
+	      if [ $ch == "1" ];then
+	      selectALL
+	      else
+	      echo " not valid option "
+	      fi
+	    fi 
 else
  echo " table doesn't exist "
 fi 

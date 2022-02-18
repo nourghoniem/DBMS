@@ -10,5 +10,4 @@
         printf "\t\t${table%%.*}\t\t\n"
       done 
     fi
-   
-Menu
+    Menu

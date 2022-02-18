@@ -3,7 +3,7 @@
 function Menu(){
 
     PS3=' '$name': Please enter your choice: '
-    options=("Create Table" "List Table" "Display Table" "Drop Table" "Insert into Table" "Select from Table" "Delete from Table" "Go to main page")
+    options=("Create Table" "List Table"  "Drop Table" "Insert into Table" "Select from Table" "Delete from Table" "Go to main page")
    select opt in "${options[@]}"
    do
      case $opt in

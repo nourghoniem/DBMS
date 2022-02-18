@@ -25,7 +25,7 @@ if [ $Check == "true" ]; then
 
    i=0;
    re='^[0-9]+$'
-   ree=[a-zA-Z]
+   ree='^[A-Za-z ]+$'
    while [[ $i < ${#fieldtype[@]} ]] 
        do
             echo "Enter an/a ${fieldtype[$i]} value for attribute ${fieldnames[$i]}"
@@ -33,7 +33,7 @@ if [ $Check == "true" ]; then
            do
                read value;
                primaryKeyInsertion=($(awk -F,  '/'$value'/ {print $1}' "Databases/$name/Data/${table}.csv"))
-               echo "$primaryKeyInsertion";
+               #echo "$primaryKeyInsertion";
                if [ ${fieldtype[$i]} == "int" ]; then
                    if ! [[ $value =~ $re ]]; then
                         echo "You should enter an integer value";
@@ -45,9 +45,11 @@ if [ $Check == "true" ]; then
                 fi
     
                elif [ ${fieldtype[$i]} == "string" ]; then
-                     if ! [[ $value =~ $ree ]] ; then
+                    if ! [[ $value =~ $ree ]] ; then
                         echo "You should enter a string value";
-                     else
+                    elif [[ $i == 0 && ! -z $primaryKeyInsertion  ]]; then
+                        echo "Primary Key cannot be duplicated"
+                    else
                         row+="$value,"
                         #echo "$row" >> ./Databases/$name/Data/${table}.csv
                         break;    

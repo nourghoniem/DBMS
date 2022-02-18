@@ -7,7 +7,7 @@ row=$(grep -wn $iid  Databases/$name/Data/$ttname.csv| cut -d ':' -f1);
 
  if [ "$row" != "" ];then
       
-     sed -i.bk "${row}d" Databases/iti/Data/student.csv
+     sed -i.bk "${row}d" Databases/$name/Data/$ttname.csv
      find . -name "*.bk" -type f -delete
       echo " successfully deleted "
      
