@@ -6,13 +6,13 @@ function checkIfTableExists(){
          
      else 
           ifexists="false";
-          echo "Table doesn't exist";
+          echo "${bold}Table doesn't exist${normal}";
      fi
      echo $ifexists;
 }
 
 #!/bin/bash
-echo "Enter the table you want to insert into";
+echo "${bold}Enter the table you want to insert into${normal}";
 read table;
 row="";
 Check=$(checkIfTableExists)
@@ -28,7 +28,7 @@ if [ $Check == "true" 2> errors.err ]; then
    ree='^[A-Za-z ]+$'
    while [[ $i < ${#fieldtype[@]} ]] 
        do
-            echo "Enter an/a ${fieldtype[$i]} value for attribute ${fieldnames[$i]}"
+            echo "${bold}Enter an/a ${fieldtype[$i]} value for attribute ${fieldnames[$i]} ${normal}"
         while true
            do
                read value;
@@ -36,9 +36,9 @@ if [ $Check == "true" 2> errors.err ]; then
                #echo "$primaryKeyInsertion";
                if [ ${fieldtype[$i]} == "int" ]; then
                    if ! [[ $value =~ $re ]]; then
-                        echo "You should enter an integer value";
+                        echo "${bold}You should enter an integer value${normal}";
                    elif [[ $i == 0 && ! -z $primaryKeyInsertion  ]]; then
-                        echo "Primary Key cannot be duplicated"
+                        echo "${bold}Primary Key cannot be duplicated${normal}"
                    else
                         row+="$value,"
                         break;
@@ -46,9 +46,9 @@ if [ $Check == "true" 2> errors.err ]; then
     
                elif [ ${fieldtype[$i]} == "string" ]; then
                     if ! [[ $value =~ $ree ]] ; then
-                        echo "You should enter a string value";
+                        echo "${bold}You should enter a string value${normal}";
                     elif [[ $i == 0 && ! -z $primaryKeyInsertion  ]]; then
-                        echo "Primary Key cannot be duplicated"
+                        echo "${bold}Primary Key cannot be duplicated${normal}"
                     else
                         row+="$value,"
                         #echo "$row" >> ./Databases/$name/Data/${table}.csv
@@ -61,7 +61,7 @@ if [ $Check == "true" 2> errors.err ]; then
         done
         echo "${row%%,}" >> ./Databases/$name/Data/${table}.csv
 else
-   echo "table doesn't exist"
+   echo "${bold}table doesn't exist${normal}"
 fi
   Menu
 Menu

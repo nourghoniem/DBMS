@@ -1,5 +1,5 @@
 #!/bin/bash
-echo " please enter data base name "
+echo "${bold} please enter database name ${normal} "
 read del
  if [ -d  Databases/$del/ 2> errors.err ];then
     
@@ -8,7 +8,7 @@ read del
 	then
 	    rm -r Databases/$del
             echo " "
-           echo " $del successfully deleted"
+           echo "${bold} $del successfully deleted${normal}"
              . Home.sh
          
 	else 
@@ -17,14 +17,14 @@ read del
 	   . Home.sh
 	else
 	  echo " "
-          echo " not valid option "
+          echo "${bold} not valid option ${normal}"
           . Home.sh
            fi
 	fi
 
  else
      echo " "
-     echo " data base $del doesn't exist "
+     echo " ${bold}data base $del doesn't exist ${normal} "
      . Home.sh
         
  fi

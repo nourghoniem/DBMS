@@ -2,6 +2,6 @@
 if [[ $(ls -A) ]]; then
    ls -r Databases
 else
-    echo "no databases found"
+    echo "${bold}no databases found${normal}"
 fi
 . Home.sh

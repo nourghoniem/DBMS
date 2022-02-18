@@ -61,7 +61,7 @@ function selectALL(){
 
 function selectById(){
 
- read -p  " please enter id for  to display the record " iid
+ read -p  "${bold} please enter id for to display the record ${normal} " iid
 
 row=$(grep -wn "$iid"  Databases/$name/Data/$tname.csv| cut -d ':' -f1);
    if [ "$row" != "" ];then
@@ -78,28 +78,28 @@ row=$(grep -wn "$iid"  Databases/$name/Data/$tname.csv| cut -d ':' -f1);
 	    
 	    printf "$u \n"
     else
-          echo " this id doesn't exist "
+          echo "${bold} this id doesn't exist ${normal}"
     fi
                       }
 
 
 ##### main code 
-echo "please enter table name: "
+echo "${bold}please enter table name: ${normal}"
 read tname
  Check=$(checkIfTableExists)
  if [ $Check == "true" ];then
-	    read -p " please choose 1 to  select all or 2 to select by id : "  ch
+	    read -p "${bold} please choose 1 to  select all or 2 to select by id : ${normal}"  ch
 	    if [ $ch == "2" ];then
 	      selectById
 	    else 
 	      if [ $ch == "1" ];then
 	      selectALL
 	      else
-	      echo " not valid option "
+	      echo "${bold} not valid option ${normal} "
 	      fi
 	    fi 
 else
- echo " table doesn't exist "
+ echo " ${bold}table doesn't exist${normal} "
 fi 
   
 Menu
