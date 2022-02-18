@@ -2,7 +2,6 @@
 function checkIfTableExists(){
      ifexists=""
      if [ -f "Databases/$name/MetaData/${table}.csv" 2> errors.err ]; then
-          #echo "file exists."
           ifexists="true";
          
      else 
@@ -17,7 +16,8 @@ echo "Enter the table you want to insert into";
 read table;
 row="";
 Check=$(checkIfTableExists)
-if [ $Check == "true" ]; then
+
+if [ $Check == "true" 2> errors.err ]; then
    fieldnames=($(awk -F, '{print $1}' "Databases/$name/MetaData/${table}.csv"))
    fieldtype=($(awk -F, '{print $2}' "Databases/$name/MetaData/${table}.csv"))
    constraints=($(awk -F, '{print $3}' "Databases/$name/MetaData/${table}.csv"))
@@ -32,7 +32,7 @@ if [ $Check == "true" ]; then
         while true
            do
                read value;
-               primaryKeyInsertion=($(awk -F,  '/'$value'/ {print $1}' "Databases/$name/Data/${table}.csv"))
+               primaryKeyInsertion=($(awk -F,  '/'"$value"'/ {print $1}' "Databases/$name/Data/${table}.csv"))
                #echo "$primaryKeyInsertion";
                if [ ${fieldtype[$i]} == "int" ]; then
                    if ! [[ $value =~ $re ]]; then
@@ -60,6 +60,8 @@ if [ $Check == "true" ]; then
             ((i=i+1))
         done
         echo "${row%%,}" >> ./Databases/$name/Data/${table}.csv
+else
+   echo "table doesn't exist"
 fi
   Menu
 Menu

@@ -3,7 +3,7 @@
 read -p " please enter table name to delete from : " ttname
 read -p  " please enter id  to delete record  " iid
 
-row=$(grep -wn $iid  Databases/$name/Data/$ttname.csv| cut -d ':' -f1);
+row=$(grep -wn "$iid"  Databases/$name/Data/$ttname.csv| cut -d ':' -f1);
 
  if [ "$row" != "" ];then
       

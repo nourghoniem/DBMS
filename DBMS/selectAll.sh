@@ -63,7 +63,7 @@ function selectById(){
 
  read -p  " please enter id for  to display the record " iid
 
-row=$(grep -wn $iid  Databases/$name/Data/$tname.csv| cut -d ':' -f1);
+row=$(grep -wn "$iid"  Databases/$name/Data/$tname.csv| cut -d ':' -f1);
    if [ "$row" != "" ];then
            u=""
   drawHeader
