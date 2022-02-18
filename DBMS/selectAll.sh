@@ -2,7 +2,7 @@
 . tmenu.sh 
 function checkIfTableExists(){
      
-     if [ -f Databases/$name/MetaData/$tname.csv ]; then
+     if [ -f Databases/$name/MetaData/$tname.csv 2> errors.err ]; then
           #echo "file exists."
           ifexists="true";
          

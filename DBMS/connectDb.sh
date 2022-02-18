@@ -5,7 +5,7 @@ echo "Please enter the Database name "
 read  name
 # check if the given name is a directory and exists in db folder
  
-  if [ -d  Databases/$name/ ];then
+  if [ -d  Databases/$name/ 2> errors.err ];then
        
       #cd  Databases/$name
       echo "Connected to Database $name"
@@ -14,8 +14,9 @@ read  name
       
   else
      echo "Database $name doesn't exist"
-        
+     . Home.sh    
    fi
+  
    
  
       
